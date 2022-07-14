@@ -1,6 +1,6 @@
 package com.linkedlist;
 
-public class FlatlinkedList {
+public class FlatLinkedList {
 
 	class ListNode {
 		int val;
