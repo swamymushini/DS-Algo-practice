@@ -13,7 +13,7 @@ public class SortLinkedList {
 
 	public ListNode sortList(ListNode A) {
 
-		ListNode right = MidElement(A);
+		ListNode right = getMid(A);
 
 		if (right == A) {
 			return A;
@@ -25,7 +25,7 @@ public class SortLinkedList {
 		return new MergeTwoLists().mergeTwoLists(left, right);
 	}
 
-	public ListNode MidElement(ListNode A) {
+	public ListNode getMid(ListNode A) {
 
 		ListNode slow = A;
 		ListNode fast = A;
