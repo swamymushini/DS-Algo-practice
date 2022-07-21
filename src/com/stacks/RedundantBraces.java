@@ -13,9 +13,6 @@ public class RedundantBraces {
 	public int braces(String A) {
 
         Stack<Character> st = new Stack<>();
-
-        boolean flag = true;
-
         Set<Character> set = new HashSet<>();
 
         set.add('*');
