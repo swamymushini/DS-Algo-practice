@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class LRUCache {
 
-	
-
 	int curSize = 0;
 	int size = 0;
 

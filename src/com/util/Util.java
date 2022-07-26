@@ -3,6 +3,7 @@ package com.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
 import com.linkedlist.DetectLoop;
 import com.linkedlist.DoubleNode;
@@ -219,6 +220,24 @@ public class Util {
 			temp = temp.next;
 		}
 
+		System.out.println();
+	}
+
+	public static Stack<Integer> prepareStack(int[] arr) {
+
+		Stack<Integer> st = new Stack<>();
+
+		for (int a : arr)
+			st.push(a);
+
+		return st;
+	}
+	
+	public static void printStack(Stack<Integer> st) {
+
+		for (int a : st)
+			System.out.print(a + " ");
+		
 		System.out.println();
 	}
 }
