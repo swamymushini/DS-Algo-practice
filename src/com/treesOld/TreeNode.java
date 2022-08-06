@@ -1,4 +1,4 @@
-package com.trees.old;
+package com.treesOld;
 
 public class TreeNode<T> {
 
