@@ -6,7 +6,9 @@ import java.util.Queue;
 public class TreeNode {
 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode().buildTree(new Integer[][] { { 1 }, { 1, 2 }, { 1, 2, null, 4 } });
+		TreeNode root = TreeNode.buildTree(
+				new Integer[][] { { 1 }, { 1, 2 }, { 1, 2, null, 4 }, { 3, null, 6, 5, null, null, 9, null } });
+		TreeNode.printTree(root);
 		System.out.println(root);
 	}
 
@@ -21,7 +23,7 @@ public class TreeNode {
 	public TreeNode() {
 	}
 
-	TreeNode buildTree(Integer[][] arr) {
+	public static TreeNode buildTree(Integer[][] arr) {
 
 		Queue<TreeNode> qu = new LinkedList<TreeNode>();
 		TreeNode root = new TreeNode(arr[0][0]);
@@ -39,20 +41,46 @@ public class TreeNode {
 				if (arr[i][j + 1] != null)
 					node.right = new TreeNode(arr[i][j + 1]);
 
-				qu.add(node.left);
-				qu.add(node.right);
+				if (node == null) {
+					qu.add(null);
+					qu.add(null);
+				} else {
+					qu.add(node.left);
+					qu.add(node.right);
+				}
 			}
 		}
 
 		return root;
 	}
 
-	void printTree(TreeNode root) {
+	public static void printTree(TreeNode root) {
 
 		Queue<TreeNode> qu = new LinkedList<TreeNode>();
 		qu.add(root);
-		
-		while(qu.isEmpty()) {}
+		qu.add(new TreeNode(null));
+
+		while (!qu.isEmpty()) {
+
+			TreeNode poll = qu.poll();
+
+			if (poll == null) {
+				System.out.print("  ");
+				continue;
+			}
+
+			if (poll.val == null) {
+				if (!qu.isEmpty())
+					qu.add(new TreeNode(null));
+				System.out.println();
+			} else {
+				System.out.print(poll.val + " ");
+				if (poll.left != null || poll.right != null) {
+					qu.add(poll.left);
+					qu.add(poll.right);
+				}
+			}
+		}
 
 	}
 }
