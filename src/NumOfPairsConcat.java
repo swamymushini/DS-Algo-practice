@@ -4,8 +4,6 @@ import java.util.Map;
 public class NumOfPairsConcat {
 
 	public static void main(String[] args) {
-//		System.out.println(new NumOfPairsConcat().numOfPairs(new String[] {"77","77","777","7"}, "7777"));
-
 		System.out.println(
 				new NumOfPairsConcat().numOfPairs(new String[] { "88760205", "88", "8", "7602058" }, "887602058"));
 	}

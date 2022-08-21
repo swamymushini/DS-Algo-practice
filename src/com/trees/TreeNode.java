@@ -56,7 +56,7 @@ public class TreeNode {
 
 	public static int height(TreeNode root) {
 
-		if (root == null) 
+		if (root == null)
 			return -1;
 
 		return Math.max(height(root.left), height(root.right)) + 1;
@@ -90,5 +90,20 @@ public class TreeNode {
 			}
 		}
 
+	}
+
+	TreeNode buildBBST(int[] A, int min, int max) {
+
+		if (min < 0 || max >= A.length || min > max)
+			return null;
+
+		int mid = (min + max) / 2;
+
+		TreeNode node = new TreeNode(A[mid]);
+
+		node.left = buildBBST(A, min, mid - 1);
+		node.right = buildBBST(A, mid + 1, max);
+
+		return node;
 	}
 }

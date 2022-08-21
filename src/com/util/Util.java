@@ -8,6 +8,7 @@ import java.util.Stack;
 import com.linkedlist.DetectLoop;
 import com.linkedlist.DoubleNode;
 import com.linkedlist.ListNode;
+import com.trees.TreeNode;
 
 public class Util {
 
@@ -123,6 +124,26 @@ public class Util {
 
 		return arr1;
 	}
+//	
+//	public static void printNestedArrayList(ArrayList<ArrayList<Integer>> arr) {
+//
+//
+//
+//		for (int i = 0; i < arr.size(); i++) {
+//
+//			int[] inArr = new int[col];
+//
+//			List<Integer> otArr = arr.get(i);
+//
+//			for (int j = 0; j < col; j++) {
+//				inArr[j] = otArr.get(j);
+//			}
+//
+//			arr1[i] = inArr;
+//		}
+//
+//		return arr1;
+//	}
 
 	public static int[] generateMaxInput() {
 		int[] res = new int[8930];
@@ -239,5 +260,10 @@ public class Util {
 			System.out.print(a + " ");
 		
 		System.out.println();
+	}
+	
+	public static TreeNode getSampleTree() {
+		return TreeNode.buildTree(
+				new Integer[][] { { 1 }, { 1, 2 }, { 1, 2, null, 4 }, { 3, null, 6, 5, null, null, 9, null } });
 	}
 }
