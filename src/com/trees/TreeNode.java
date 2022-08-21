@@ -9,7 +9,7 @@ public class TreeNode {
 		TreeNode root = TreeNode.buildTree(
 				new Integer[][] { { 1 }, { 1, 2 }, { 1, 2, null, 4 }, { 3, null, 6, 5, null, null, 9, null } });
 		TreeNode.printTree(root);
-		System.out.println(root);
+		System.out.println(TreeNode.height(root));
 	}
 
 	TreeNode right;
@@ -52,6 +52,14 @@ public class TreeNode {
 		}
 
 		return root;
+	}
+
+	public static int height(TreeNode root) {
+
+		if (root == null) 
+			return -1;
+
+		return Math.max(height(root.left), height(root.right)) + 1;
 	}
 
 	public static void printTree(TreeNode root) {
