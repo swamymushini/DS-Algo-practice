@@ -1,4 +1,4 @@
-package com.trees;
+package com.trees.BST;
 
 public class BSTOneChild {
 	public String solve(int[] A) {

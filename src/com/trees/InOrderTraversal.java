@@ -1,22 +1,29 @@
 package com.trees;
 
+import java.util.ArrayList;
+
+import com.trees.BST.ValidateBST;
+import com.util.Util;
+
 public class InOrderTraversal {
 
 	public static void main(String[] args) {
-		TreeNode root = TreeNode.buildTree(new Integer[][] { { 11 }, { 6, 15 }, { 2, 9, 7, null },
-				{ null, null, 13, null, null, null, null, null } });
 
-		new InOrderTraversal().inOrder(root);
+		TreeNode root = Util.getSampleBSTree();
+
+		System.out.println(new ValidateBST().isValidBST(root));
+
+		new InOrderTraversal().inOrder(root, new ArrayList<Integer>());
 	}
 
-	void inOrder(TreeNode root) {
+	public void inOrder(TreeNode root,ArrayList<Integer> res) {
 
 		if (root == null)
 			return;
 
-		inOrder(root.left);
-		System.out.print(root.val + " ");
-		inOrder(root.right);
+		inOrder(root.left,res);
+		res.add(root.val);
+		inOrder(root.right,res);
 	}
 
 }

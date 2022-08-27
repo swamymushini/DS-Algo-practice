@@ -8,6 +8,7 @@ import java.util.Stack;
 import com.linkedlist.DetectLoop;
 import com.linkedlist.DoubleNode;
 import com.linkedlist.ListNode;
+import com.trees.InOrderTraversal;
 import com.trees.TreeNode;
 
 public class Util {
@@ -253,17 +254,34 @@ public class Util {
 
 		return st;
 	}
-	
+
 	public static void printStack(Stack<Integer> st) {
 
 		for (int a : st)
 			System.out.print(a + " ");
-		
+
 		System.out.println();
 	}
-	
+
 	public static TreeNode getSampleTree() {
 		return TreeNode.buildTree(
 				new Integer[][] { { 1 }, { 1, 2 }, { 1, 2, null, 4 }, { 3, null, 6, 5, null, null, 9, null } });
+	}
+
+	public static TreeNode getSampleBSTree() {
+		return TreeNode.buildTree(new Integer[][] { { 15 }, { 12, 20 }, { 9, 14, 16, 27 },
+				{ 8, 10, null, null, null, null, 23, 29 },
+				{ null, null, null, null, null, null, null, null, null, null, null, null, 22, 24, 28, 31 } });
+	}
+
+	public static ArrayList<Integer> inOrder(TreeNode root) {
+		ArrayList<Integer> res = new ArrayList<Integer>();
+		new InOrderTraversal().inOrder(root, res);
+		return res;
+	}
+	
+	public static void printInOrder(TreeNode root) {
+		ArrayList<Integer> inOrder = inOrder(root);
+		System.out.println(inOrder);
 	}
 }

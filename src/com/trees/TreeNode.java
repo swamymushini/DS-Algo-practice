@@ -12,9 +12,9 @@ public class TreeNode {
 		System.out.println(TreeNode.height(root));
 	}
 
-	TreeNode right;
-	TreeNode left;
-	Integer val;
+	public TreeNode right;
+	public TreeNode left;
+	public Integer val;
 
 	public TreeNode(Integer val) {
 		this.val = val;

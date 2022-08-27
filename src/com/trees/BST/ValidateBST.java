@@ -1,4 +1,6 @@
-package com.trees;
+package com.trees.BST;
+
+import com.trees.TreeNode;
 
 //range approach
 public class ValidateBST {
