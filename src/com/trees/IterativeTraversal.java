@@ -2,14 +2,16 @@ package com.trees;
 
 import java.util.Stack;
 
+import com.util.Util;
+
 public class IterativeTraversal {
 
 	public static void main(String[] args) {
 		TreeNode root = TreeNode.buildTree(new Integer[][] { { 11 }, { 6, 15 }, { 2, 9, 7, null } });
 
-		new IterativeTraversal().postOrder(root);
+		new IterativeTraversal().postOrder(Util.getSampleBSTree());
 		System.out.println();
-//		new PostOrderTraversal().postOrder(Util.getSampleBSTree());
+		new PostOrderTraversal().postOrder(Util.getSampleBSTree());
 	}
 
 	public void preOrder(TreeNode root) {
@@ -74,28 +76,53 @@ public class IterativeTraversal {
 		}
 
 	}
+	
+	class TreeInfo{
+		public TreeNode root;
+		public int cnt = 0;
+		
+		 public TreeInfo(TreeNode root) {
+			 this.cnt = 1;
+			 this.root = root;
+		 }
+		 
+		 
+	}
 
 	public void postOrder(TreeNode root) {
 
 		TreeNode node = root;
 
-		Stack<TreeNode> st = new Stack<>();
+		Stack<TreeInfo> st = new Stack<>();
 
-		st.push(node);
+		st.push(new TreeInfo(node));
 
 		while (!st.isEmpty()) {
 			
 			while (node != null&&node.left != null) {
-				st.push(node.left);
+				st.push(new TreeInfo(node.left));
 				node = node.left;
 			}
 			
-			if(node.right!=null) {
-				st.push(node.right);
+			if(node != null&&node.right!=null) {
+				st.push(new TreeInfo(node.right));
 				node = node.right;
 			}
 			else {
-				TreeNode pop = st.pop();
+				TreeInfo pop = st.pop();
+				System.out.print(pop.root.val+" ");
+				
+				if(st.isEmpty())
+					break;
+				
+				TreeInfo peek = st.peek();
+				
+				if(peek.cnt!=2&&peek.root.right!=null) {
+					st.push(new TreeInfo(peek.root.right));
+					node = peek.root.right;
+					peek.cnt = 2;
+				}else
+					node = null;
 			}
 		}
 
