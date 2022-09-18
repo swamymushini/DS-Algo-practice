@@ -7,11 +7,7 @@ import com.util.Util;
 public class IterativeTraversal {
 
 	public static void main(String[] args) {
-		TreeNode root = TreeNode.buildTree(new Integer[][] { { 11 }, { 6, 15 }, { 2, 9, 7, null } });
-
-		new IterativeTraversal().postOrder(Util.getSampleBSTree());
-		System.out.println();
-		new PostOrderTraversal().postOrder(Util.getSampleBSTree());
+		new IterativeTraversal().inOrder(Util.getSampleBSTree());
 	}
 
 	public void preOrder(TreeNode root) {
@@ -46,31 +42,22 @@ public class IterativeTraversal {
 
 	public void inOrder(TreeNode root) {
 
-		TreeNode node = root;
+		TreeNode temp = root;
 
 		Stack<TreeNode> st = new Stack<>();
+		
+		TreeNode curr = temp;  
 
-		st.push(node);
+		while (curr!=null||!st.isEmpty()) {
 
-		while (!st.isEmpty()) {
-
-			while (node != null) {
-
-				if (node.left == null)
-					break;
-
-				st.push(node.left);
-				node = node.left;
+			if(curr!=null) {
+				st.push(curr);
+				curr=curr.left;
+			}else {
+				curr = st.pop();
+				System.out.print(curr.val+" ");
+				curr=curr.right;
 			}
-
-			TreeNode pop = st.pop();
-
-			System.out.print(pop.val + " ");
-
-			if (pop.right != null)
-				st.push(pop.right);
-
-			node = pop.right;
 
 		}
 
