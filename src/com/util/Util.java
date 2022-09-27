@@ -272,7 +272,7 @@ public class Util {
 
 	public static TreeNode getSampleBSTree() {
 		return buildTree(
-				new Integer[][] { { 15 }, { 12, 20 }, { 9, 14, 16, 27 }, { 8, 10, null, null, null, null, 23, 29 },
+				new Integer[][] { { 15 }, { 12, 20 }, { 8, 14, 16, 27 }, { 9, 10, null, null, null, null, 23, 29 },
 						{ null, null, null, null, null, null, null, null, null, null, null, null, 22, 24, 28, 31 } });
 	}
 
