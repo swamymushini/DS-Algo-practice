@@ -17,6 +17,7 @@ public class DistanceBtwNodes {
 		else {
 			return solve(A.right, B, C) + solve(A.left, B, C) + 2;
 		}
+		return C;
 	}
 
 }
