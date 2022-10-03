@@ -1,13 +1,17 @@
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.trees.TreeNode;
-import com.util.Util;
 
 public class Test {
 
 	public static void main(String[] args) {
-		ArrayList<Integer> recoverTree = new Test().recoverTree(Util.getSampleBSTree());
-		System.out.println(recoverTree);
+//		ArrayList<Integer> recoverTree = new Test().recoverTree(Util.getSampleBSTree());
+//		System.out.println(recoverTree);
+		
+		Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+		System.out.println(timestamp);
 	}
 
 	public ArrayList<Integer> recoverTree(TreeNode A) {
