@@ -11,7 +11,9 @@ import com.linkedlist.DetectLoop;
 import com.linkedlist.DoubleNode;
 import com.linkedlist.ListNode;
 import com.trees.InOrderTraversal;
+import com.trees.SerializeDeserialize;
 import com.trees.TreeNode;
+import com.trees.BST.ValidateBST;
 
 public class Util {
 
@@ -346,5 +348,17 @@ public class Util {
 			}
 		}
 
+	}
+	
+	public static TreeNode deSerialize(String data) {
+		return SerializeDeserialize.deSerialize(data);
+	}
+	
+	public static String serialize(TreeNode node) {
+		return SerializeDeserialize.serialize(node);
+	}
+	
+	public static boolean isBST(TreeNode node) {
+		return new ValidateBST().isValidBST(node)==1; 
 	}
 }
