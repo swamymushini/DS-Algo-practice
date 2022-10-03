@@ -25,7 +25,7 @@ public class MorrisInOrder {
 					temp.right = curr;
 				} else {
 					System.out.print(curr.val + " ");
-					curr=curr.right;
+					curr = curr.right;
 					temp.right = null;
 				}
 
