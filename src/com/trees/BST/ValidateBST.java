@@ -9,7 +9,7 @@ public class ValidateBST {
 		TreeNode root = TreeNode.buildTree(new Integer[][] { { 25 }, { 7, 36 }, { 10, 22, 30, 40 },
 				{ 5, 12, null, null, 28, 32, 38, 48 }, {}, {} });
 		System.out.println(new ValidateBST().isValidBST(root));
-		System.out.println(new ValidateBST().isBST(root).isBST);
+		System.out.println(new ValidateBST().postOrderCheck(root).isBST);
 	}
 
 	class TreeInfo {
@@ -48,14 +48,15 @@ public class ValidateBST {
 		return false;
 	}
 
-	public TreeInfo isBST(TreeNode A) {
+
+	public TreeInfo postOrderCheck(TreeNode A) {
 
 		if (A == null) {
 			return new TreeInfo(Integer.MAX_VALUE, Integer.MIN_VALUE, null, true);
 		}
 
-		TreeInfo l = isBST(A.left);
-		TreeInfo r = isBST(A.right);
+		TreeInfo l = postOrderCheck(A.left);
+		TreeInfo r = postOrderCheck(A.right);
 
 		Integer val = A.val;
 		
