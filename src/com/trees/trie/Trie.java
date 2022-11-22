@@ -1,4 +1,4 @@
-package com.trees;
+package com.trees.trie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class Trie {
+
+	public static void main(String[] args) {
+		Trie t = new Trie();
+		t.add("gopal");
+		t.add("gopal");
+		t.printWords();
+	}
 
 	class Node {
 
@@ -65,8 +72,7 @@ public class Trie {
 	List<String> getCharacters(Node root) {
 
 		List<String> res = new ArrayList<>();
-		Node curr = root;
-		Map<Character, Node> hm = curr.getHm();
+		Map<Character, Node> hm = root.getHm();
 		Set<Character> keySet = hm.keySet();
 
 		for (Character c : keySet) {
@@ -82,16 +88,6 @@ public class Trie {
 			}
 		}
 		return res;
-	}
-
-	public static void main(String[] args) {
-		Trie t = new Trie();
-		t.add("gopal");
-		t.add("gopal1");
-		t.add("gop");
-		t.add("hello");
-		t.add("hello1");
-		t.printWords();
 	}
 
 }
