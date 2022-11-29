@@ -32,6 +32,15 @@ public class Util {
 		}
 		System.out.println();
 	}
+	
+	public static void printArray(String[] arr) {
+
+		for (String i : arr) {
+			System.out.print(i);
+			System.out.print(" ");
+		}
+		System.out.println();
+	}
 
 	public static void printArrayList(List<Integer> list) {
 
