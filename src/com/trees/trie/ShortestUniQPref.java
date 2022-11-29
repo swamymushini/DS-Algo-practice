@@ -9,7 +9,7 @@ public class ShortestUniQPref {
 
 	public static void main(String[] args) {
 		String[] prefix = new ShortestUniQPref()
-				.prefix(new String[] { "bearcat", "bert", "zebra", "dog", "duck", "dove" });
+				.prefix(new String[] { "bearcate", "bearcat", "bert", "zebra", "dog", "duck", "dove" });
 		Util.printArray(prefix);
 	}
 
@@ -22,6 +22,8 @@ public class ShortestUniQPref {
 
 			public Node() {
 			}
+
+			int freq = 0;
 
 			public Map<Character, Node> getHm() {
 				return hm;
@@ -41,6 +43,7 @@ public class ShortestUniQPref {
 				char c = s.charAt(i);
 				Map<Character, Node> hm = curr.getHm();
 				Node node = hm.getOrDefault(c, new Node());
+				node.freq = node.freq + 1;
 				hm.put(c, node);
 				curr = node;
 			}
@@ -57,34 +60,24 @@ public class ShortestUniQPref {
 		Character c = s.charAt(0);
 		sb.append(c.toString());
 
-		int preCount = 0;
-
-		String temp = null;
-
 		Trie.Node curr = hm.get(s.charAt(0));
 
 		for (int i = 1; i < s.length(); i++) {
 
 			Map<Character, Trie.Node> hm2 = curr.getHm();
 
+			if (curr.freq == 1) {
+				return sb.toString();
+			}
+
 			c = s.charAt(i);
 			sb.append(c.toString());
 
-			if (preCount == 1 && hm2.size() >= 2) {
-				temp = sb.toString();
-			}
 			Trie.Node node = hm2.get(c);
-
 			curr = node;
-			preCount = hm2.size();
 		}
 
-		if (temp == null) {
-			Character c1 = s.charAt(0);
-			return c1.toString();
-		}
-
-		return temp;
+		return sb.toString();
 	}
 
 	public String[] prefix(String[] A) {
