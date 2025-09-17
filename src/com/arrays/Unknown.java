@@ -3,10 +3,15 @@ package com.arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.util.Util;
+
 public class Unknown {
 
+	private static int[] lszero;
+
 	public static void main(String[] args) {
-		System.out.println(new Unknown().lszero(new int[] { 0, 22, 7, 21, -11, -6, -7, -16, -2 }));
+		lszero = new Unknown().lszero(new int[] { 0, 22, 7, 21, -11, -6, -7, -16, -2 });
+		Util.printArray(lszero);
 	}
 
 	public int[] lszero(int[] A) {

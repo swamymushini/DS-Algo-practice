@@ -6,7 +6,7 @@ public class LongestPalindromic {
 
 	public static void main(String[] args) {
 
-		ListNode head = Util.prepareLinkedList(new int[] { 1 });
+		ListNode head = Util.prepareLinkedList(new int[] { 1,2,2,3,3,2,2 });
 
 		System.out.println(new LongestPalindromic().solve(head));
 	}

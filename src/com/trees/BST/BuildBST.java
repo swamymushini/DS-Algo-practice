@@ -9,7 +9,11 @@ public class BuildBST {
 		TreeNode root = Util.getSampleBSTree();
 		Util.printInOrder(root);
 		root = new BuildBST().delete(9, root);
+		root = new BuildBST().insert(root, 9);
+		root = new BuildBST().insert(root, 26);
+
 		Util.printInOrder(root);
+		System.out.println(new BuildBST().findNearest(root, 85));
 	}
 
 	TreeNode insert(TreeNode root, int val) {
@@ -17,10 +21,10 @@ public class BuildBST {
 		if (root == null)
 			return new TreeNode(val);
 
-		if (root.val < val)
+		if (val <= root.val)
 			root.left = insert(root.left, val);
 
-		if (root.val >= val)
+		if (val > root.val)
 			root.right = insert(root.right, val);
 
 		return root;
@@ -32,7 +36,7 @@ public class BuildBST {
 			root.left = delete(val, root.left);
 		else if (val > root.val)
 			root.right = delete(val, root.right);
-		
+
 		else if (root.left == null && root.right == null)
 			return null;
 
@@ -41,7 +45,7 @@ public class BuildBST {
 
 		else if (root.right == null)
 			return root.right;
-		
+
 		else {
 			int max = getMax(root.left);
 
@@ -58,5 +62,33 @@ public class BuildBST {
 			return root.val;
 
 		return getMax(root.right);
+	}
+
+	private int findNearest(TreeNode root, int target) {
+
+		if (root == null)
+			return 0;
+
+		if (root.val <= target) {
+			int candidate = findNearest(root.right, target);
+			return (candidate != 0) ? candidate : root.val;
+		} else {
+			int candidate = findNearest(root.left, target);
+			return (candidate != 0) ? candidate : root.val;
+		}
+	}
+
+	private int findNearestLess(TreeNode root, int target) {
+
+		if (root == null)
+			return 0;
+
+		if (root.val >= target) {
+			return findNearestLess(root.left, target);
+		} else {
+			int candidate = findNearestLess(root.right, target);
+			return (candidate != 0) ? candidate : root.val;
+		}
+
 	}
 }

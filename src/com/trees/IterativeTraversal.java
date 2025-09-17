@@ -20,7 +20,7 @@ public class IterativeTraversal {
 
 		while (!st.isEmpty()) {
 
-			while (node != null) {
+			while (node !=  null) {
 
 				System.out.print(node.val + " ");
 

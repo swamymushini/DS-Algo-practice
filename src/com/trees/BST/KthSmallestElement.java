@@ -1,5 +1,7 @@
 package com.trees.BST;
 
+import java.util.Stack;
+
 import com.trees.TreeNode;
 import com.util.Util;
 
@@ -13,6 +15,8 @@ public class KthSmallestElement {
 		TreeNode root = TreeNode.buildTree(new Integer[][] { { 11 }, { 12, 12 }, { 3, 4, 3, 4 } });
 		Util.printInOrder(root);
 		System.out.println(new KthSmallestElement().kthsmallest(root, 5));
+		System.out.println(new KthSmallestElement().usingStack(root, 5));
+
 	}
 
 	int res = 0;
@@ -40,4 +44,33 @@ public class KthSmallestElement {
 
 		inOrder(A.right);
 	}
+
+	private int usingStack(TreeNode node, int k) {
+
+		Stack<TreeNode> stack = new Stack<>();
+		stack.add(node);
+
+		TreeNode current = node;
+
+		while (!stack.isEmpty()) {
+
+			while (current.left != null) {
+				stack.add(current.left);
+				current = current.left;
+			}
+
+			TreeNode pop = stack.pop();
+
+			if (--k == 0)
+				return pop.val;
+
+			if (pop.right != null) {
+				current = pop.right;
+				stack.add(current);
+			}
+		}
+
+		return 0;
+	}
+
 }

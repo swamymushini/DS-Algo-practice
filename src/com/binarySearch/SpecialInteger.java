@@ -6,7 +6,6 @@ public class SpecialInteger {
 
 	public static void main(String[] args) {
 		System.out.println(new SpecialInteger().solve(Util.generateMaxInput(), 100000));
-
 	}
 
 	public int solve(int[] A, int B) {

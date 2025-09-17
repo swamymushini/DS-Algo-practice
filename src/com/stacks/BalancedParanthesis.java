@@ -11,7 +11,6 @@ public class BalancedParanthesis {
 	}
 
 	public int solve(String A) {
-
 		Map<Character, Character> mp = new HashMap<Character, Character>();
 		Stack<Character> st = new Stack<Character>();
 		mp.put(')', '(');

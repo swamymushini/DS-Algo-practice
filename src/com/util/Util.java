@@ -32,7 +32,23 @@ public class Util {
 		}
 		System.out.println();
 	}
-	
+
+	public static void printArray(double[] arr) {
+
+		for (double i : arr) {
+			System.out.print(i);
+			System.out.print(" ");
+		}
+		System.out.println();
+	}
+
+	public static void printArray(char[] arr) {
+		for (char c : arr) {
+			System.out.print(c + " ");
+		}
+		System.out.println();
+	}
+
 	public static void printArray(String[] arr) {
 
 		for (String i : arr) {
@@ -56,6 +72,34 @@ public class Util {
 		for (int[] i : arr) {
 
 			for (int j : i) {
+				System.out.print(j);
+				System.out.print(" ");
+			}
+
+			System.out.println();
+		}
+
+	}
+	
+	public static void print2DArray(Integer[][] arr) {
+
+		for (Integer[] i : arr) {
+
+			for (Integer j : i) {
+				System.out.print(j);
+				System.out.print(" ");
+			}
+
+			System.out.println();
+		}
+
+	}
+
+	public static void print2DArray(Boolean[][] arr) {
+
+		for (Boolean[] i : arr) {
+
+			for (Boolean j : i) {
 				System.out.print(j);
 				System.out.print(" ");
 			}
@@ -157,6 +201,10 @@ public class Util {
 //		}
 //
 //		return arr1;
+	
+	
+	
+	
 //	}
 
 	public static int[] generateMaxInput() {
@@ -358,16 +406,16 @@ public class Util {
 		}
 
 	}
-	
+
 	public static TreeNode deSerialize(String data) {
 		return SerializeDeserialize.deSerialize(data);
 	}
-	
+
 	public static String serialize(TreeNode node) {
 		return SerializeDeserialize.serialize(node);
 	}
-	
+
 	public static boolean isBST(TreeNode node) {
-		return new ValidateBST().isValidBST(node)==1; 
+		return new ValidateBST().isValidBST(node) == 1;
 	}
 }

@@ -1,93 +1,61 @@
 package com.trees.trie;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Trie {
 
 	public static void main(String[] args) {
-		Trie t = new Trie();
-		t.add("gopal");
-		t.add("gopal");
-		t.printWords();
+
 	}
 
 	class Node {
-
-		Map<Character, Node> hm = new HashMap<>();
-		public boolean isEnd = false;
-
-		public Node() {
-		}
-
-		public Map<Character, Node> getHm() {
-			return hm;
-		}
-
-		public void setEnd(boolean isEnd) {
-			this.isEnd = isEnd;
-		}
+		boolean isEnd;
+		Map<Character, Node> map = new HashMap<>();
 
 	}
 
 	Node root = new Node();
 
-	void add(String s) {
+	public void insert(String word) {
 		Node curr = root;
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			Map<Character, Node> hm = curr.getHm();
-			Node node = hm.getOrDefault(c, new Node());
-			hm.put(c, node);
-			curr = node;
+		for (int i = 0; i < word.length(); i++) {
+			char a = word.charAt(i);
+			if (curr.map.containsKey(a)) {
+				curr = curr.map.get(a);
+				continue;
+			}
+			Node newNode = new Node();
+			curr.map.put(a, newNode);
+			curr = newNode;
 		}
 		curr.isEnd = true;
 	}
 
-	boolean find(String s) {
+	public boolean search(String word) {
 		Node curr = root;
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			Map<Character, Node> hm = curr.getHm();
-			Node node = hm.get(c);
-			if (node == null)
+		for (int i = 0; i < word.length(); i++) {
+			char a = word.charAt(i);
+			if (!curr.map.containsKey(a)) {
 				return false;
-			curr = node;
+			}
+			curr = curr.map.get(a);
 		}
+
 		return curr.isEnd;
 	}
 
-	void printWords() {
-		List<String> characters = getCharacters(root);
-		System.out.println(characters);
-	}
-
-	List<String> getWords() {
-		return getCharacters(root);
-	}
-
-	List<String> getCharacters(Node root) {
-
-		List<String> res = new ArrayList<>();
-		Map<Character, Node> hm = root.getHm();
-		Set<Character> keySet = hm.keySet();
-
-		for (Character c : keySet) {
-			Node node = hm.get(c);
-			List<String> chars = getCharacters(node);
-			if (node.isEnd) {
-				res.add(c.toString());
+	public boolean startsWith(String word) {
+		Node curr = root;
+		for (int i = 0; i < word.length(); i++) {
+			char a = word.charAt(i);
+			if (!curr.map.containsKey(a)) {
+				return false;
 			}
-			for (String word : chars) {
-				StringBuilder sb = new StringBuilder(c.toString());
-				sb.append(word);
-				res.add(sb.toString());
-			}
+			curr = curr.map.get(a);
 		}
-		return res;
+
+		return true;
 	}
 
 }

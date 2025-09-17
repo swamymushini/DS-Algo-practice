@@ -10,7 +10,7 @@ public class SlidingWindowMaximum {
 
 	public static void main(String[] args) {
 		System.out.println(new SlidingWindowMaximum()
-				.slidingMaximum(Util.createArrayList(new int[] { 1, 2, 3, 4, 2, 7, 1, 3, 6 }), 1));
+				.slidingMaximum(Util.createArrayList(new int[] { -2, -1 ,3, 0, 2, 1, 4 }), 3));
 	}
 
 	public ArrayList<Integer> slidingMaximum(final List<Integer> A, int B) {

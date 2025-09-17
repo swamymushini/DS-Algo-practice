@@ -22,6 +22,8 @@ public class PerfectNumbers {
 			A--;
 		}
 		
+		
+		
 		String poll = qu.poll();
 		
 		StringBuilder sb = new StringBuilder(poll);
